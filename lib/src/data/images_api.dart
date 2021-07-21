@@ -11,7 +11,7 @@ class ImageApi {
   Future<Images> getImages() async {
     final Uri uri = Uri.parse(_apiUrl);
     final Response response = await _client.get(uri);
-    
+
     return Images.fromJson(jsonDecode(response.body)['results']);
   }
 }

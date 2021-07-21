@@ -6,7 +6,6 @@ abstract class Images implements Built<Images, ImagesBuilder> {
 
   Images._();
 
-
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 
   static Serializer<Images> get serializer => _$imagesSerializer;

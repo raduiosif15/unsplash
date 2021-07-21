@@ -36,8 +36,7 @@ class _$ImagesSerializer implements StructuredSerializer<Images> {
   final String wireName = 'Images';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Images object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object?> serialize(Serializers serializers, Images object, {FullType specifiedType = FullType.unspecified}) {
     return <Object?>[];
   }
 
@@ -55,12 +54,10 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
   final String wireName = 'Url';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Url object,
-      {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object?> serialize(Serializers serializers, Url object, {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'regular',
-      serializers.serialize(object.regular,
-          specifiedType: const FullType(String)),
+      serializers.serialize(object.regular, specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -78,8 +75,7 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
       final Object? value = iterator.current;
       switch (key) {
         case 'regular':
-          result.regular = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+          result.regular = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -89,14 +85,12 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
 }
 
 class _$AppState extends AppState {
-  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
-      (new AppStateBuilder()..update(updates)).build();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
 
   _$AppState._() : super._();
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -143,14 +137,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 }
 
 class _$Images extends Images {
-  factory _$Images([void Function(ImagesBuilder)? updates]) =>
-      (new ImagesBuilder()..update(updates)).build();
+  factory _$Images([void Function(ImagesBuilder)? updates]) => (new ImagesBuilder()..update(updates)).build();
 
   _$Images._() : super._();
 
   @override
-  Images rebuild(void Function(ImagesBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Images rebuild(void Function(ImagesBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   ImagesBuilder toBuilder() => new ImagesBuilder()..replace(this);
@@ -200,16 +192,14 @@ class _$Url extends Url {
   @override
   final String regular;
 
-  factory _$Url([void Function(UrlBuilder)? updates]) =>
-      (new UrlBuilder()..update(updates)).build();
+  factory _$Url([void Function(UrlBuilder)? updates]) => (new UrlBuilder()..update(updates)).build();
 
   _$Url._({required this.regular}) : super._() {
     BuiltValueNullFieldError.checkNotNull(regular, 'Url', 'regular');
   }
 
   @override
-  Url rebuild(void Function(UrlBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
+  Url rebuild(void Function(UrlBuilder) updates) => (toBuilder()..update(updates)).build();
 
   @override
   UrlBuilder toBuilder() => new UrlBuilder()..replace(this);
@@ -227,8 +217,7 @@ class _$Url extends Url {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Url')..add('regular', regular))
-        .toString();
+    return (newBuiltValueToStringHelper('Url')..add('regular', regular)).toString();
   }
 }
 
@@ -263,10 +252,7 @@ class UrlBuilder implements Builder<Url, UrlBuilder> {
 
   @override
   _$Url build() {
-    final _$result = _$v ??
-        new _$Url._(
-            regular: BuiltValueNullFieldError.checkNotNull(
-                regular, 'Url', 'regular'));
+    final _$result = _$v ?? new _$Url._(regular: BuiltValueNullFieldError.checkNotNull(regular, 'Url', 'regular'));
     replace(_$result);
     return _$result;
   }
