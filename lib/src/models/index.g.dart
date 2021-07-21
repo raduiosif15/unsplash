@@ -19,13 +19,37 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
   @override
   Iterable<Object?> serialize(Serializers serializers, AppState object,
       {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
+    final result = <Object?>[
+      'images',
+      serializers.serialize(object.images,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Images)])),
+    ];
+
+    return result;
   }
 
   @override
   AppState deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new AppStateBuilder().build();
+    final result = new AppStateBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'images':
+          result.images.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Images)]))!
+              as BuiltList<Object?>);
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
@@ -36,14 +60,35 @@ class _$ImagesSerializer implements StructuredSerializer<Images> {
   final String wireName = 'Images';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Images object, {FullType specifiedType = FullType.unspecified}) {
-    return <Object?>[];
+  Iterable<Object?> serialize(Serializers serializers, Images object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[
+      'urls',
+      serializers.serialize(object.urls, specifiedType: const FullType(Url)),
+    ];
+
+    return result;
   }
 
   @override
   Images deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    return new ImagesBuilder().build();
+    final result = new ImagesBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'urls':
+          result.urls.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Url))! as Url);
+          break;
+      }
+    }
+
+    return result.build();
   }
 }
 
@@ -54,10 +99,12 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
   final String wireName = 'Url';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, Url object, {FullType specifiedType = FullType.unspecified}) {
+  Iterable<Object?> serialize(Serializers serializers, Url object,
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[
       'regular',
-      serializers.serialize(object.regular, specifiedType: const FullType(String)),
+      serializers.serialize(object.regular,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -75,7 +122,8 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
       final Object? value = iterator.current;
       switch (key) {
         case 'regular':
-          result.regular = serializers.deserialize(value, specifiedType: const FullType(String)) as String;
+          result.regular = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -85,12 +133,19 @@ class _$UrlSerializer implements StructuredSerializer<Url> {
 }
 
 class _$AppState extends AppState {
-  factory _$AppState([void Function(AppStateBuilder)? updates]) => (new AppStateBuilder()..update(updates)).build();
+  @override
+  final BuiltList<Images> images;
 
-  _$AppState._() : super._();
+  factory _$AppState([void Function(AppStateBuilder)? updates]) =>
+      (new AppStateBuilder()..update(updates)).build();
+
+  _$AppState._({required this.images}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(images, 'AppState', 'images');
+  }
 
   @override
-  AppState rebuild(void Function(AppStateBuilder) updates) => (toBuilder()..update(updates)).build();
+  AppState rebuild(void Function(AppStateBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
@@ -98,24 +153,39 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState;
+    return other is AppState && images == other.images;
   }
 
   @override
   int get hashCode {
-    return 134797703;
+    return $jf($jc(0, images.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper('AppState').toString();
+    return (newBuiltValueToStringHelper('AppState')..add('images', images))
+        .toString();
   }
 }
 
 class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState? _$v;
 
+  ListBuilder<Images>? _images;
+  ListBuilder<Images> get images =>
+      _$this._images ??= new ListBuilder<Images>();
+  set images(ListBuilder<Images>? images) => _$this._images = images;
+
   AppStateBuilder();
+
+  AppStateBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _images = $v.images.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(AppState other) {
@@ -130,19 +200,39 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 
   @override
   _$AppState build() {
-    final _$result = _$v ?? new _$AppState._();
+    _$AppState _$result;
+    try {
+      _$result = _$v ?? new _$AppState._(images: images.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'images';
+        images.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
 }
 
 class _$Images extends Images {
-  factory _$Images([void Function(ImagesBuilder)? updates]) => (new ImagesBuilder()..update(updates)).build();
+  @override
+  final Url urls;
 
-  _$Images._() : super._();
+  factory _$Images([void Function(ImagesBuilder)? updates]) =>
+      (new ImagesBuilder()..update(updates)).build();
+
+  _$Images._({required this.urls}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(urls, 'Images', 'urls');
+  }
 
   @override
-  Images rebuild(void Function(ImagesBuilder) updates) => (toBuilder()..update(updates)).build();
+  Images rebuild(void Function(ImagesBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   ImagesBuilder toBuilder() => new ImagesBuilder()..replace(this);
@@ -150,24 +240,38 @@ class _$Images extends Images {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Images;
+    return other is Images && urls == other.urls;
   }
 
   @override
   int get hashCode {
-    return 675185054;
+    return $jf($jc(0, urls.hashCode));
   }
 
   @override
   String toString() {
-    return newBuiltValueToStringHelper('Images').toString();
+    return (newBuiltValueToStringHelper('Images')..add('urls', urls))
+        .toString();
   }
 }
 
 class ImagesBuilder implements Builder<Images, ImagesBuilder> {
   _$Images? _$v;
 
+  UrlBuilder? _urls;
+  UrlBuilder get urls => _$this._urls ??= new UrlBuilder();
+  set urls(UrlBuilder? urls) => _$this._urls = urls;
+
   ImagesBuilder();
+
+  ImagesBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _urls = $v.urls.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
 
   @override
   void replace(Images other) {
@@ -182,7 +286,20 @@ class ImagesBuilder implements Builder<Images, ImagesBuilder> {
 
   @override
   _$Images build() {
-    final _$result = _$v ?? new _$Images._();
+    _$Images _$result;
+    try {
+      _$result = _$v ?? new _$Images._(urls: urls.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'urls';
+        urls.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'Images', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }
@@ -192,14 +309,16 @@ class _$Url extends Url {
   @override
   final String regular;
 
-  factory _$Url([void Function(UrlBuilder)? updates]) => (new UrlBuilder()..update(updates)).build();
+  factory _$Url([void Function(UrlBuilder)? updates]) =>
+      (new UrlBuilder()..update(updates)).build();
 
   _$Url._({required this.regular}) : super._() {
     BuiltValueNullFieldError.checkNotNull(regular, 'Url', 'regular');
   }
 
   @override
-  Url rebuild(void Function(UrlBuilder) updates) => (toBuilder()..update(updates)).build();
+  Url rebuild(void Function(UrlBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
 
   @override
   UrlBuilder toBuilder() => new UrlBuilder()..replace(this);
@@ -217,7 +336,8 @@ class _$Url extends Url {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Url')..add('regular', regular)).toString();
+    return (newBuiltValueToStringHelper('Url')..add('regular', regular))
+        .toString();
   }
 }
 
@@ -252,7 +372,10 @@ class UrlBuilder implements Builder<Url, UrlBuilder> {
 
   @override
   _$Url build() {
-    final _$result = _$v ?? new _$Url._(regular: BuiltValueNullFieldError.checkNotNull(regular, 'Url', 'regular'));
+    final _$result = _$v ??
+        new _$Url._(
+            regular: BuiltValueNullFieldError.checkNotNull(
+                regular, 'Url', 'regular'));
     replace(_$result);
     return _$result;
   }

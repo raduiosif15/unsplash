@@ -6,6 +6,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   AppState._();
 
+  BuiltList<Images> get images;
+
   Map<String, dynamic> get json => serializers.serializeWith(serializer, this)! as Map<String, dynamic>;
 
   static Serializer<AppState> get serializer => _$appStateSerializer;

@@ -20,7 +20,7 @@ class _$GetImagesTearOff {
     return const GetImagesStart();
   }
 
-  GetImagesSuccessful successful(Images images) {
+  GetImagesSuccessful successful(dynamic images) {
     return GetImagesSuccessful(
       images,
     );
@@ -42,14 +42,14 @@ mixin _$GetImages {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Images images) successful,
+    required TResult Function(dynamic images) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Images images)? successful,
+    TResult Function(dynamic images)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) =>
@@ -73,7 +73,8 @@ mixin _$GetImages {
 
 /// @nodoc
 abstract class $GetImagesCopyWith<$Res> {
-  factory $GetImagesCopyWith(GetImages value, $Res Function(GetImages) then) = _$GetImagesCopyWithImpl<$Res>;
+  factory $GetImagesCopyWith(GetImages value, $Res Function(GetImages) then) =
+      _$GetImagesCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -87,14 +88,16 @@ class _$GetImagesCopyWithImpl<$Res> implements $GetImagesCopyWith<$Res> {
 
 /// @nodoc
 abstract class $GetImagesStartCopyWith<$Res> {
-  factory $GetImagesStartCopyWith(GetImagesStart value, $Res Function(GetImagesStart) then) =
+  factory $GetImagesStartCopyWith(
+          GetImagesStart value, $Res Function(GetImagesStart) then) =
       _$GetImagesStartCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class _$GetImagesStartCopyWithImpl<$Res> extends _$GetImagesCopyWithImpl<$Res>
     implements $GetImagesStartCopyWith<$Res> {
-  _$GetImagesStartCopyWithImpl(GetImagesStart _value, $Res Function(GetImagesStart) _then)
+  _$GetImagesStartCopyWithImpl(
+      GetImagesStart _value, $Res Function(GetImagesStart) _then)
       : super(_value, (v) => _then(v as GetImagesStart));
 
   @override
@@ -123,7 +126,7 @@ class _$GetImagesStart implements GetImagesStart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Images images) successful,
+    required TResult Function(dynamic images) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return $default();
@@ -133,7 +136,7 @@ class _$GetImagesStart implements GetImagesStart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Images images)? successful,
+    TResult Function(dynamic images)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -174,15 +177,18 @@ abstract class GetImagesStart implements GetImages {
 
 /// @nodoc
 abstract class $GetImagesSuccessfulCopyWith<$Res> {
-  factory $GetImagesSuccessfulCopyWith(GetImagesSuccessful value, $Res Function(GetImagesSuccessful) then) =
+  factory $GetImagesSuccessfulCopyWith(
+          GetImagesSuccessful value, $Res Function(GetImagesSuccessful) then) =
       _$GetImagesSuccessfulCopyWithImpl<$Res>;
-  $Res call({Images images});
+  $Res call({dynamic images});
 }
 
 /// @nodoc
-class _$GetImagesSuccessfulCopyWithImpl<$Res> extends _$GetImagesCopyWithImpl<$Res>
+class _$GetImagesSuccessfulCopyWithImpl<$Res>
+    extends _$GetImagesCopyWithImpl<$Res>
     implements $GetImagesSuccessfulCopyWith<$Res> {
-  _$GetImagesSuccessfulCopyWithImpl(GetImagesSuccessful _value, $Res Function(GetImagesSuccessful) _then)
+  _$GetImagesSuccessfulCopyWithImpl(
+      GetImagesSuccessful _value, $Res Function(GetImagesSuccessful) _then)
       : super(_value, (v) => _then(v as GetImagesSuccessful));
 
   @override
@@ -193,10 +199,7 @@ class _$GetImagesSuccessfulCopyWithImpl<$Res> extends _$GetImagesCopyWithImpl<$R
     Object? images = freezed,
   }) {
     return _then(GetImagesSuccessful(
-      images == freezed
-          ? _value.images
-          : images // ignore: cast_nullable_to_non_nullable
-              as Images,
+      images == freezed ? _value.images : images,
     ));
   }
 }
@@ -207,7 +210,7 @@ class _$GetImagesSuccessful implements GetImagesSuccessful {
   const _$GetImagesSuccessful(this.images);
 
   @override
-  final Images images;
+  final dynamic images;
 
   @override
   String toString() {
@@ -218,11 +221,13 @@ class _$GetImagesSuccessful implements GetImagesSuccessful {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetImagesSuccessful &&
-            (identical(other.images, images) || const DeepCollectionEquality().equals(other.images, images)));
+            (identical(other.images, images) ||
+                const DeepCollectionEquality().equals(other.images, images)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode ^ const DeepCollectionEquality().hash(images);
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(images);
 
   @JsonKey(ignore: true)
   @override
@@ -233,7 +238,7 @@ class _$GetImagesSuccessful implements GetImagesSuccessful {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Images images) successful,
+    required TResult Function(dynamic images) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return successful(images);
@@ -243,7 +248,7 @@ class _$GetImagesSuccessful implements GetImagesSuccessful {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Images images)? successful,
+    TResult Function(dynamic images)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -279,16 +284,18 @@ class _$GetImagesSuccessful implements GetImagesSuccessful {
 }
 
 abstract class GetImagesSuccessful implements GetImages {
-  const factory GetImagesSuccessful(Images images) = _$GetImagesSuccessful;
+  const factory GetImagesSuccessful(dynamic images) = _$GetImagesSuccessful;
 
-  Images get images => throw _privateConstructorUsedError;
+  dynamic get images => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetImagesSuccessfulCopyWith<GetImagesSuccessful> get copyWith => throw _privateConstructorUsedError;
+  $GetImagesSuccessfulCopyWith<GetImagesSuccessful> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $GetImagesErrorCopyWith<$Res> {
-  factory $GetImagesErrorCopyWith(GetImagesError value, $Res Function(GetImagesError) then) =
+  factory $GetImagesErrorCopyWith(
+          GetImagesError value, $Res Function(GetImagesError) then) =
       _$GetImagesErrorCopyWithImpl<$Res>;
   $Res call({Object error, StackTrace stackTrace});
 }
@@ -296,7 +303,8 @@ abstract class $GetImagesErrorCopyWith<$Res> {
 /// @nodoc
 class _$GetImagesErrorCopyWithImpl<$Res> extends _$GetImagesCopyWithImpl<$Res>
     implements $GetImagesErrorCopyWith<$Res> {
-  _$GetImagesErrorCopyWithImpl(GetImagesError _value, $Res Function(GetImagesError) _then)
+  _$GetImagesErrorCopyWithImpl(
+      GetImagesError _value, $Res Function(GetImagesError) _then)
       : super(_value, (v) => _then(v as GetImagesError));
 
   @override
@@ -340,9 +348,11 @@ class _$GetImagesError implements GetImagesError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetImagesError &&
-            (identical(other.error, error) || const DeepCollectionEquality().equals(other.error, error)) &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)) &&
             (identical(other.stackTrace, stackTrace) ||
-                const DeepCollectionEquality().equals(other.stackTrace, stackTrace)));
+                const DeepCollectionEquality()
+                    .equals(other.stackTrace, stackTrace)));
   }
 
   @override
@@ -360,7 +370,7 @@ class _$GetImagesError implements GetImagesError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Images images) successful,
+    required TResult Function(dynamic images) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return error(this.error, stackTrace);
@@ -370,7 +380,7 @@ class _$GetImagesError implements GetImagesError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Images images)? successful,
+    TResult Function(dynamic images)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -406,10 +416,12 @@ class _$GetImagesError implements GetImagesError {
 }
 
 abstract class GetImagesError implements GetImages, ErrorAction {
-  const factory GetImagesError(Object error, StackTrace stackTrace) = _$GetImagesError;
+  const factory GetImagesError(Object error, StackTrace stackTrace) =
+      _$GetImagesError;
 
   Object get error => throw _privateConstructorUsedError;
   StackTrace get stackTrace => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GetImagesErrorCopyWith<GetImagesError> get copyWith => throw _privateConstructorUsedError;
+  $GetImagesErrorCopyWith<GetImagesError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
