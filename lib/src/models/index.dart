@@ -8,6 +8,6 @@ part 'index.g.dart';
 
 part 'app_state.dart';
 
-part 'image.dart';
+part 'images.dart';
 
 part 'url.dart';

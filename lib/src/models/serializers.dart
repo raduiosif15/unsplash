@@ -8,7 +8,7 @@ part 'serializers.g.dart';
 
 @SerializersFor(<Type>[
   AppState,
-  Image,
+  Images,
   Url,
 ])
 Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

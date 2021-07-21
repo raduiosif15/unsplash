@@ -8,7 +8,7 @@ part of serializers;
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppState.serializer)
-      ..add(Image.serializer)
+      ..add(Images.serializer)
       ..add(Url.serializer))
     .build();
 
